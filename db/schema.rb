@@ -21,18 +21,6 @@ ActiveRecord::Schema.define(version: 20150814101147) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "smtp_credentials", force: :cascade do |t|
-    t.string   "address"
-    t.string   "user_name"
-    t.string   "port"
-    t.string   "domain"
-    t.string   "authentication"
-    t.string   "password"
-    t.boolean  "enable_starttls_auto"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
