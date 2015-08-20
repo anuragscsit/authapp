@@ -11,14 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814101147) do
+ActiveRecord::Schema.define(version: 20150820132058) do
 
-  create_table "products", force: :cascade do |t|
+  create_table "colleges", force: :cascade do |t|
     t.string   "name"
-    t.string   "category"
-    t.integer  "price"
+    t.integer  "univercity_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "city"
+    t.string   "state"
+  end
+
+  add_index "colleges", ["univercity_id"], name: "index_colleges_on_univercity_id"
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+  add_index "roles", ["name"], name: "index_roles_on_name"
+
+  create_table "univercities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,9 +72,17 @@ ActiveRecord::Schema.define(version: 20150814101147) do
     t.string   "provider"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
+    t.string   "image"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
 
 end

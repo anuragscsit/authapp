@@ -29,7 +29,11 @@ gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'rails_admin'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'rolify'
+gem 'cancancan', '~> 1.10'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

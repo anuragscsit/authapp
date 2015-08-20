@@ -16,3 +16,4 @@
 //= require dataTables/jquery.dataTables
 //= require turbolinks
 //= require_tree .
+$('#myModal').modal('show')
