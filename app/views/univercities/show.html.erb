@@ -14,14 +14,17 @@
   <dd><%= @univercity.country %></dd>
 </dl>
 <dl class="dl-horizontal">
-<% get_colleges(@univercity).each do |c|%>
-  <%= link_to c, univercity_college_path(@univercity,c)%><br>
-<% end %>
+<dt><strong>Colleges :</strong></dt>
+<dd>
+  <% get_colleges(@univercity).each do |c|%>
+    <%= link_to c, univercity_college_path(@univercity,c)%><br>
+  <% end %>
+</dd>
 </dl>
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              univercities_path, :class => 'btn btn-default'  %>
+              univercities_path, :class => 'btn btn-warning'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_univercity_path(@univercity), :class => 'btn btn-default' %>
+              edit_univercity_path(@univercity), :class => 'btn btn-warning' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               univercity_path(@univercity),
               :method => 'delete',
