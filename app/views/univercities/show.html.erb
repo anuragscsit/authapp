@@ -13,7 +13,11 @@
   <dt><strong><%= model_class.human_attribute_name(:country) %>:</strong></dt>
   <dd><%= @univercity.country %></dd>
 </dl>
-
+<dl class="dl-horizontal">
+<% get_colleges(@univercity).each do |c|%>
+  <%= link_to c, univercity_college_path(@univercity,c)%><br>
+<% end %>
+</dl>
 <%= link_to t('.back', :default => t("helpers.links.back")),
               univercities_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
