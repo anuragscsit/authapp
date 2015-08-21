@@ -13,7 +13,7 @@ class UnivercitiesController < ApplicationController
 	end
 
 	def show
-		@univercity = Univercity.find(params[:id])
+		@univercity = Univercity.friendly.find(params[:id])
 	end
 
 	def create
@@ -42,8 +42,8 @@ class UnivercitiesController < ApplicationController
 
 	private
 
-		def univ_params
-			params.require(:univercity).permit(:name,:city,:state,:country)
+		def univ_parms
+			params.require(:univercity).permit(:name,:city,:country,:state,:slug)
 		end
 
 end

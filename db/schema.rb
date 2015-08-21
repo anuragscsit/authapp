@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820141143) do
+ActiveRecord::Schema.define(version: 20150821073251) do
 
   create_table "colleges", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150820141143) do
     t.datetime "updated_at",    null: false
     t.string   "city"
     t.string   "state"
+    t.string   "slug"
   end
 
   add_index "colleges", ["univercity_id"], name: "index_colleges_on_univercity_id"
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150820141143) do
     t.string   "city"
     t.string   "state"
     t.string   "country"
+    t.string   "slug"
   end
 
   create_table "users", force: :cascade do |t|

@@ -16,8 +16,8 @@
 <dl class="dl-horizontal">
 <dt><strong>Colleges :</strong></dt>
 <dd>
-  <% get_colleges(@univercity).each do |c|%>
-    <%= link_to c, univercity_college_path(@univercity,c)%><br>
+  <% @univercity.colleges.each do |c|%>
+    <%= link_to c.name, univercity_college_path(@univercity,c)%><br>
   <% end %>
 </dd>
 </dl>

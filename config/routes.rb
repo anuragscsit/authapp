@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout',via: [:get, :post]
 
 	resources :univercities do 
-	  resources :colleges
+	  resources :colleges,:only => [:show]
 	end
   
 end

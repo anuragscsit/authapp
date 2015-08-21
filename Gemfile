@@ -34,6 +34,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'rolify'
 gem 'cancancan', '~> 1.10'
+gem "friendly_id", "~> 5.0.1"
 # Use Unicorn as the app server
 # gem 'unicorn'
 
