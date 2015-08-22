@@ -10,5 +10,11 @@ Rails.application.routes.draw do
 	resources :univercities do 
 	  resources :colleges,:only => [:show]
 	end
+
+  resources :batches, :only => [:show, :index] do
+    resources :courses,:sections, :only => [:show] do 
+      resources :time_table, :only => [:show]
+    end
+  end
   
 end

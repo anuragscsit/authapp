@@ -1,0 +1,39 @@
+<%- model_class = Batch -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+<div class="col-md-12">
+
+  <div class="col-md-6">
+
+    <dl class="dl-horizontal">
+      <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+      <dd><%= link_to @batch.name, batches_path,:class => 'btn btn-info' %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:year) %>:</strong></dt>
+      <dd><%= @batch.year %></dd>
+    </dl>
+  
+    <dl class="dl-horizontal">
+      <dt><strong>Courses in this batch:</strong></dt>
+      <dd>
+        <% @batch.courses.each do |c|%>
+          <%= link_to c.name, batch_course_path(@batch,c),:class => 'btn btn-info'%><br><br>
+        <% end %>
+      </dd>
+    </dl>
+  
+    <dl class="dl-horizontal">
+      <dt><strong>Sections in this batch:</strong></dt>
+      <dd>
+        <% @batch.sections.each do |c|%>
+          <%= link_to c.name, batch_section_path(@batch,c), :class => 'btn btn-info'%><br><br>
+        <% end %>
+      </dd>
+    </dl>
+
+    <%= link_to t('.back', :default => t("helpers.links.back")),
+                batches_path, :class => 'btn btn-warning'  %>
+  
+  </div>
+   
+</div>

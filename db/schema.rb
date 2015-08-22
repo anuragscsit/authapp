@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821073251) do
+ActiveRecord::Schema.define(version: 20150822114850) do
+
+  create_table "batches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "year"
+  end
 
   create_table "colleges", force: :cascade do |t|
     t.string   "name"
@@ -31,6 +38,21 @@ ActiveRecord::Schema.define(version: 20150821073251) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "courses", force: :cascade do |t|
+    t.integer  "batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+  end
+
+  add_index "courses", ["batch_id"], name: "index_courses_on_batch_id"
+
+  create_table "faculties", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -41,6 +63,46 @@ ActiveRecord::Schema.define(version: 20150821073251) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], name: "index_roles_on_name"
+
+  create_table "sections", force: :cascade do |t|
+    t.integer  "batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+  end
+
+  add_index "sections", ["batch_id"], name: "index_sections_on_batch_id"
+
+  create_table "subjects", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "faculty_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+  end
+
+  add_index "subjects", ["course_id"], name: "index_subjects_on_course_id"
+  add_index "subjects", ["faculty_id"], name: "index_subjects_on_faculty_id"
+
+  create_table "time_tables", force: :cascade do |t|
+    t.integer  "section_id"
+    t.integer  "course_id"
+    t.integer  "batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "day"
+    t.string   "l1"
+    t.string   "l2"
+    t.string   "l3"
+    t.string   "l4"
+    t.string   "l5"
+    t.string   "l6"
+    t.string   "l7"
+  end
+
+  add_index "time_tables", ["batch_id"], name: "index_time_tables_on_batch_id"
+  add_index "time_tables", ["course_id"], name: "index_time_tables_on_course_id"
+  add_index "time_tables", ["section_id"], name: "index_time_tables_on_section_id"
 
   create_table "univercities", force: :cascade do |t|
     t.string   "name"

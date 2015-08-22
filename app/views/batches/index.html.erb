@@ -1,0 +1,20 @@
+<%- model_class = Batch -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:year) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @batches.each do |batch| %>
+      <tr>
+        <td><%= link_to batch.name, batch_path(batch) %></td>
+        <td><%= batch.year %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

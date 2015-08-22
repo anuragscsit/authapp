@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  section_id: 
+  course_id: 
+  batch_id: 
+
+two:
+  section_id: 
+  course_id: 
+  batch_id: 
